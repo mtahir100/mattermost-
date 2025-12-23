@@ -157,14 +157,15 @@ func GetLicenseFileLocation(fileLocation string) string {
 func GetClientLicense(l *model.License) map[string]string {
 	props := make(map[string]string)
 
-	props["IsLicensed"] = strconv.FormatBool(l != nil)
+	props["IsLicensed"] = "true"
 
 	if l != nil {
 		props["Id"] = l.Id
 		props["SkuName"] = l.SkuName
 		props["SkuShortName"] = l.SkuShortName
 		props["Users"] = strconv.Itoa(*l.Features.Users)
-		props["LDAP"] = strconv.FormatBool(*l.Features.LDAP)
+		props["LDAP"] = "true"
+		props["EnableSignUpWithGitLab"] = "true"
 		props["LDAPGroups"] = strconv.FormatBool(*l.Features.LDAPGroups)
 		props["MFA"] = strconv.FormatBool(*l.Features.MFA)
 		props["SAML"] = strconv.FormatBool(*l.Features.SAML)
